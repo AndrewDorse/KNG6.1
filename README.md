@@ -10,7 +10,7 @@ Dockerized Polymarket **BTC Up/Down** bot: **5-minute and 15-minute windows run 
 |------|------|
 | **KNG3** | SHAMAN v1 (Paladin) deploy image |
 | **KNG4** | PRST1 scalp |
-| **KNG6** | This streak076 one-shot buy |
+| **KNG6** | This streak076 one-shot buy (**use this**; KNG5 name was dropped) |
 
 ## Local run
 
