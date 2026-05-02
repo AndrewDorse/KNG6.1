@@ -1,0 +1,12 @@
+# KNG6 — copy .env.example to .env, fill keys, set POLY_DRY_RUN=false when ready.
+services:
+  kng6:
+    build: .
+    image: kng6-streak076:local
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - ./logs:/app/logs
+    environment:
+      POLY_DRY_RUN: "${POLY_DRY_RUN:-true}"

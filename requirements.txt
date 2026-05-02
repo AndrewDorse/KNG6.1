@@ -1,0 +1,6 @@
+# KNG6 — streak076 cheap live (py_clob_client_v2 market FAK buys)
+py-clob-client>=0.32.0
+py_clob_client_v2>=1.0.0
+requests>=2.31.0
+certifi>=2024.0.0
+truststore>=0.9.0
