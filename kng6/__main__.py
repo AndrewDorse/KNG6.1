@@ -1,4 +1,4 @@
-"""``python -m kng6`` — live strategy-1 (streak12_cheap19) + $1 FAK (default 15m windows)."""
+"""``python -m kng6`` — live strategy-1 (skew 0.82, streak 22s, cheap 0.19) + $1 FAK (default 15m windows)."""
 
 from __future__ import annotations
 

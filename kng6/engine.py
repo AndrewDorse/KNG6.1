@@ -97,7 +97,7 @@ class Kng6LiveEngine:
         self._init_logged = True
         lanes_s = ",".join(f"{m}m" for m in self.s.window_minutes_list)
         LOGGER.info(
-            "KNG6 INIT version=%s strategy=streak12_cheap19 skew=%.2f streak_sec=%d cheap=%.2f "
+            "KNG6 INIT version=%s strategy=strategy1_slice1000 skew=%.2f streak_sec=%d cheap=%.2f "
             "windows=%s poll_sec=%.3f dry_run=%s notional_usd=%.2f max_trades_per_slug=%d cutoff_last_sec=%d market=%s",
             __version__,
             self.s.skew_thr,
