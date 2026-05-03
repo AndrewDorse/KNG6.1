@@ -109,7 +109,6 @@ class Kng6Clob:
             )
         except Exception as exc:  # noqa: BLE001
             LOGGER.warning("Collateral allowance sync: %s", exc)
-        LOGGER.info("KNG6 CLOB: py_clob_client_v2 host=%s chain=%s", HOST, CHAIN_ID)
 
     def _book_opts(self, token: TokenMarket) -> PartialCreateOrderOptions | None:
         tid = token.token_id
@@ -213,8 +212,10 @@ class Kng6Clob:
         }
 
     def get_midpoint(self, token_id: str) -> float | None:
-        bb = self.get_best_bid(token_id)
-        ba = self.get_best_ask(token_id)
+        """Single ``get_order_book`` per call (avoids duplicate HTTP when bid+ask needed)."""
+        b = self.get_order_book(token_id)
+        bb = self._best_bid_from_book(b)
+        ba = self._best_ask_from_book(b)
         if bb is not None and ba is not None and bb > 0 and ba > 0:
             return (bb + ba) / 2.0
         if ba is not None and ba > 0:
@@ -223,8 +224,8 @@ class Kng6Clob:
             return float(bb)
         return None
 
-    def get_best_bid(self, token_id: str) -> float | None:
-        b = self.get_order_book(token_id)
+    @staticmethod
+    def _best_bid_from_book(b: dict[str, list[dict[str, str]]]) -> float | None:
         bids = b.get("bids") or []
         if not bids:
             return None
@@ -235,8 +236,8 @@ class Kng6Clob:
                 best = p
         return best
 
-    def get_best_ask(self, token_id: str) -> float | None:
-        b = self.get_order_book(token_id)
+    @staticmethod
+    def _best_ask_from_book(b: dict[str, list[dict[str, str]]]) -> float | None:
         asks = b.get("asks") or []
         if not asks:
             return None
@@ -246,6 +247,12 @@ class Kng6Clob:
             if p > 0 and (best is None or p < best):
                 best = p
         return best
+
+    def get_best_bid(self, token_id: str) -> float | None:
+        return self._best_bid_from_book(self.get_order_book(token_id))
+
+    def get_best_ask(self, token_id: str) -> float | None:
+        return self._best_ask_from_book(self.get_order_book(token_id))
 
     def market_buy_usdc(self, token: TokenMarket, usdc: float) -> dict[str, Any]:
         u = float(usdc)

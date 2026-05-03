@@ -1,4 +1,4 @@
-"""``python -m kng6`` — live strategy-1 (streak12_cheap19: 12s max>=0.76 then cheap<=0.19) + $1 FAK (5m + 15m)."""
+"""``python -m kng6`` — live strategy-1 (streak12_cheap19) + $1 FAK (default 15m windows)."""
 
 from __future__ import annotations
 
@@ -20,13 +20,6 @@ def main() -> int:
         print(f"Config error: {exc}", file=sys.stderr)
         return 2
     configure_logging(settings.log_level)
-    print(
-        f"KNG6 boot: lanes={[f'{m}m' for m in settings.window_minutes_list]} "
-        f"poll={settings.poll_interval_seconds}s dry_run={settings.dry_run} "
-        f"notional=${settings.notional_usd:.2f} streak={settings.streak_seconds}s "
-        f"skew>={settings.skew_thr} cheap<={settings.cheap_thr}",
-        flush=True,
-    )
     Kng6LiveEngine(settings).run_forever()
     return 0
 

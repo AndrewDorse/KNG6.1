@@ -39,7 +39,7 @@ def _env_bool(name: str, default: bool) -> bool:
 def _parse_window_minutes_list(raw: str | None) -> tuple[int, ...]:
     s = _strip(raw)
     if not s:
-        return (5, 15)
+        return (15,)
     out: list[int] = []
     for part in s.split(","):
         p = part.strip()
@@ -53,7 +53,7 @@ def _parse_window_minutes_list(raw: str | None) -> tuple[int, ...]:
             ) from exc
         if v > 0 and v not in out:
             out.append(v)
-    return tuple(out) if out else (5, 15)
+    return tuple(out) if out else (15,)
 
 
 @dataclass(frozen=True, slots=True)
