@@ -1,4 +1,4 @@
-# KNG6 — strategy-1 streak12_cheap19 (5m + 15m BTC up/down, $1 FAK on signal)
+# KNG6 — strategy-1 streak12_cheap19 (default 15m BTC up/down; $1 FAK on signal)
 FROM python:3.12-slim-bookworm
 
 WORKDIR /app

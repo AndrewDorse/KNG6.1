@@ -40,6 +40,12 @@ docker compose logs -f kng6
 
 Set `POLY_DRY_RUN=false` only when ready for real orders (`py_clob_client_v2` FAK).
 
+## Go-live preflight (host)
+
+1. **`.env`:** `POLY_PRIVATE_KEY`, `POLY_FUNDER` (0x + 40 hex), relayer fields if you use them; **`POLY_DRY_RUN=false`** only when you intend real FAK buys.  
+2. **`KNG6_WINDOW_MINUTES`:** `15` for 15m-only (matches code default); remove or change if you still want `5,15`.  
+3. **Image:** `docker compose --env-file .env build` then `up -d`; confirm logs show **`KNG6 INIT`** with `dry_run=False` before leaving unattended.
+
 ## Push to GitHub
 
 1. Create an **empty** repo named `KNG6` on GitHub (no README) under your account.  
