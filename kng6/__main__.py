@@ -1,4 +1,4 @@
-"""``python -m kng6`` — live streak076 + $1 FAK (5m + 15m)."""
+"""``python -m kng6`` — live strategy-1 (streak12_cheap19: 12s max>=0.76 then cheap<=0.19) + $1 FAK (5m + 15m)."""
 
 from __future__ import annotations
 

@@ -1,4 +1,4 @@
-"""KNG6 environment (Polymarket CLOB + Gamma + streak076 params)."""
+"""KNG6 environment (Polymarket CLOB + Gamma + streak12_cheap19 / strategy-1 params)."""
 
 from __future__ import annotations
 
@@ -101,7 +101,7 @@ class Kng6Settings:
             max_trades_per_slug=max(1, _env_int("KNG6_MAX_TRADES_PER_SLUG", 1)),
             new_order_cutoff_seconds=max(0, _env_int("KNG6_NEW_ORDER_CUTOFF_SECONDS", 20)),
             skew_thr=_env_float("KNG6_SKEW_THR", 0.76),
-            streak_seconds=max(1, _env_int("KNG6_STREAK_SECONDS", 20)),
+            streak_seconds=max(1, _env_int("KNG6_STREAK_SECONDS", 12)),
             cheap_thr=_env_float("KNG6_CHEAP_THR", 0.19),
             log_level=_strip(os.getenv("KNG6_LOG_LEVEL")) or "INFO",
         )

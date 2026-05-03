@@ -126,7 +126,7 @@ class Kng6LiveEngine:
         tok = c.up if side == "up" else c.down
         if self.s.dry_run:
             LOGGER.info(
-                "KNG6[%dm] DRY BUY %s slug=%s | streak=%ds max>=%.3f then cheap<=%.3g | entry~%.4f notional=$%.2f",
+                "KNG6[%dm] DRY BUY %s slug=%s | streak12_cheap19 streak=%ds max>=%.3f then cheap<=%.3g | entry~%.4f notional=$%.2f",
                 wm,
                 side.upper(),
                 c.slug,
@@ -175,7 +175,7 @@ class Kng6LiveEngine:
     def run_forever(self) -> None:
         lanes_s = ",".join(f"{m}m" for m in self.s.window_minutes_list)
         LOGGER.info(
-            "KNG6 streak076 | lanes=%s | poll=%.3fs | dry_run=%s | $%.2f/trade max=%d/slug | "
+            "KNG6 strategy-1 streak12_cheap19 | lanes=%s | poll=%.3fs | dry_run=%s | $%.2f/trade max=%d/slug | "
             "skew>=%.3f streak=%ds cheap<=%.3g | cutoff_last=%ds | %s",
             lanes_s,
             self.s.poll_interval_seconds,

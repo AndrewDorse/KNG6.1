@@ -1,4 +1,4 @@
-"""X_streak20_076_cheap19 — PM mids only (matches PALADIN backtest helper semantics)."""
+"""X_streak12_076_cheap19 (strategy-1) — PM mids only (matches PALADIN ``_first_cheap_after_skew_streak``)."""
 
 from __future__ import annotations
 
@@ -52,6 +52,7 @@ def signal_streak076(
     streak_sec: int,
     cheap_thr: float,
 ) -> tuple[Side | None, float | None]:
+    """Entry signal for strategy-1 (defaults: 0.76 / 12 / 0.19). Name kept for imports."""
     return first_cheap_after_skew_streak(
         series, skew_thr=skew_thr, streak=streak_sec, cheap_thr=cheap_thr
     )

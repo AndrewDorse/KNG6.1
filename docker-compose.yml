@@ -1,8 +1,8 @@
-# KNG6 — copy .env.example to .env, fill keys, set POLY_DRY_RUN=false when ready.
+# KNG6 — strategy-1 streak12_cheap19. Copy .env.example to .env; POLY_DRY_RUN=false when ready.
 services:
   kng6:
     build: .
-    image: kng6-streak076:local
+    image: kng6-streak12:local
     restart: unless-stopped
     env_file:
       - .env

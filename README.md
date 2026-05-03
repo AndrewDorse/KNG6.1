@@ -1,6 +1,8 @@
-# KNG6 — streak076 cheap (live)
+# KNG6 — strategy-1: streak12_cheap19 (live)
 
-Dockerized Polymarket **BTC Up/Down** bot: **5-minute and 15-minute windows run in parallel** (separate Gamma slugs, separate tape state). When the **streak → cheap** rule fires (same logic as backtest `X_streak20_076_cheap19`: **20** consecutive seconds with `max(up,down) ≥ 0.76`, then first second with either leg **≤ 0.19**), the bot sends **one FAK market buy** for **`KNG6_NOTIONAL_USD`** (default **$1**) on the chosen outcome token.
+Dockerized Polymarket **BTC Up/Down** bot: **5-minute and 15-minute windows run in parallel** (separate Gamma slugs, separate tape state). When the **streak → cheap** rule fires (backtest id **`X_streak12_076_cheap19`**: **12** consecutive seconds with `max(up,down) ≥ 0.76`, then first second with either leg **≤ 0.19**), the bot sends **one FAK market buy** for **`KNG6_NOTIONAL_USD`** (default **$1**) on the chosen outcome token.
+
+**Calibration (PALADIN `sim_streak076_sweep_last_n.py`, newest 100 public 15m windows, 99 non-tie):** EV ≈ **+11.75** USD/window, PnL sum ≈ **+1163**, **55** hits, WR on hits ≈ **43.6%** (replay mids; not a guarantee live).
 
 **Defaults:** poll **0.25s** (`KNG6_POLL_INTERVAL_SECONDS`) to reduce missed seconds, **max 1** buy per slug, no buy in the last **20s** of the window.
 
@@ -10,7 +12,7 @@ Dockerized Polymarket **BTC Up/Down** bot: **5-minute and 15-minute windows run 
 |------|------|
 | **KNG3** | SHAMAN v1 (Paladin) deploy image |
 | **KNG4** | PRST1 scalp |
-| **KNG6** | This streak076 one-shot buy (**use this**; KNG5 name was dropped) |
+| **KNG6** | **Strategy-1** streak12_cheap19 one-shot buy (**use this**; KNG5 name was dropped) |
 
 ## Local run
 
